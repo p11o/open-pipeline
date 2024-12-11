@@ -24,3 +24,12 @@ resource "helm_release" "ollama" {
 
   values = [file("${path.module}/helm/ollama.yaml")]
 }
+
+resource "helm_release" "dagster" {
+  name = "dagster"
+
+  repository = "https://dagster-io.github.io/helm"
+  chart      = "dagster"
+
+  values = [file("${path.module}/helm/dagster.yaml")]
+}

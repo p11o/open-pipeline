@@ -2,7 +2,6 @@
 
 Create a pipeline with AI
 
-
 ## Getting started
 
 **Prerequisites**
