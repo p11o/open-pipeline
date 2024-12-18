@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Ripped from nvkind https://github.com/NVIDIA/nvkind/blob/main/shell/common.sh
+
+# systemctl restart containerd
+
+# Unmount the masked /proc/driver/nvidia to allow
+# dynamically generated MIG devices to be discovered
+umount -R /proc/driver/nvidia
+
+# Make it so that calls into nvidia-smi / libnvidia-ml.so do not
+# attempt to recreate nvidia device nodes or reset their permissions if
+# tampered with
+cp /proc/driver/nvidia/params root/gpu-params
+sed -i 's/^ModifyDeviceFiles: 1$/ModifyDeviceFiles: 0/' root/gpu-params
+mount --bind root/gpu-params /proc/driver/nvidia/params
+
+
+exec /usr/local/bin/entrypoint "$@"

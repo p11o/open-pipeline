@@ -1,0 +1,11 @@
+dagsterWebserver:
+  workspace:
+    enabled: true
+
+    servers: []
+
+dagster-user-deployments:
+  deployments: []
+
+postgresql:
+  enabled: true

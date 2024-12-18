@@ -2,12 +2,12 @@ kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
 - role: control-plane
-{{- range $gpu := until numGPUs }}
+  image: kindest/node:v1.31.4
 - role: worker
+  image: mprestifilippo/gpu-node:1.31.4
   extraMounts:
     # We inject all NVIDIA GPUs using the nvidia-container-runtime.
     # This requires `accept-nvidia-visible-devices-as-volume-mounts = true` be set
     # in `/etc/nvidia-container-runtime/config.toml`
     - hostPath: /dev/null
-      containerPath: /var/run/nvidia-container-devices/{{ $gpu }}
-{{- end }}
+      containerPath: /var/run/nvidia-container-devices/0

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-if kind get clusters -q | grep -q kind; then
+if kind get clusters -q | grep -q open-pipeline; then
   status=true
 else
   status=false
