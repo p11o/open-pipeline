@@ -1,0 +1,4 @@
+ollama
+kubernetes
+pyhelm3
+flask
